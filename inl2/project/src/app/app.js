@@ -29,6 +29,7 @@ export default class App extends React.Component {
 
     makeMoveHandler = (position) => {
         this.setState(makeMove(this.state, position))
+
     }
 
     newGameHandler = e => {
@@ -40,6 +41,7 @@ export default class App extends React.Component {
 
     render() {
 
+
         return (
             <F>
                 <h1>TIC TAC TOE game</h1>
@@ -47,8 +49,11 @@ export default class App extends React.Component {
                 <div className='board' >
 
                     {this.state.board.map((tile, i) => {
-                       return  <Tile key={i} position={i} piece={tile} onclickhandler={this.makeMoveHandler}/>
+                        const isWinning = this.state.line.includes(i)
+                        console.log('winning', isWinning)
+                       return  <Tile key={i} position={i} value={this.state} piece={tile} isWinning={isWinning} onclickhandler={this.makeMoveHandler}/>
                     })}
+
 
                 </div>
 

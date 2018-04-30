@@ -21,40 +21,43 @@ import React from 'react';
 export default function Tile(props) {
 
 
-    const position = props.position
-    const piece = props.piece
+    const position = props.position;
+    const piece = props.piece;
+    let winClass = props.isWinning ? 'line' : '';
+
 
     const clickhandler = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         props.onclickhandler(position)
-    }
+    };
 
 
     if (piece === 0) {
 
-
         return (
-            <div className={`tile`} onClick={clickhandler}>
+            <div className={`tile ${winClass}`} onClick={clickhandler} >
 
             </div>
         );
     } else if (piece === 1) {
 
         return (
-            <div className={`tile plr1`}>
+            <div className={`tile plr1 ${winClass}`}>
                 X
             </div>
         );
     } else if (piece === 2) {
+
         return (
-            <div className={`tile plr2`}>
+            <div className={`tile plr2 ${winClass}`}>
                 O
             </div>
         );
     }
+
 }
 
 Tile.propTypes = {
     piece: PropTypes.number.isRequired,
     onclickhandler: PropTypes.func.isRequired
-}
+};

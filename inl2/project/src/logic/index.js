@@ -62,7 +62,7 @@ const isWinning = (newBoard) => {
 
 
         if (newBoard[a] && newBoard[a] === newBoard[b] && newBoard[a] === newBoard[c]) {
-            return true
+            return winningCombinations[i]
         }
     }
     return false
@@ -92,7 +92,7 @@ export const makeMove = (game, pos) => {
             return {
                 state: 'plr1won',
                 board: newBoard,
-                line: []
+                line: isWinning(newBoard)
             }
 
         } //check if it's a draw
@@ -116,7 +116,7 @@ export const makeMove = (game, pos) => {
             return {
                 state: 'plr2won',
                 board: newBoard,
-                line: []
+                line: isWinning(newBoard)
             }
 
         }

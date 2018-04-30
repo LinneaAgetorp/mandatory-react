@@ -26,14 +26,14 @@ test('should not work to click same tile, should return same game-state', () => 
 
 test('player 1 won', () => {
     const plr1Move = { state: 'plr1', board: [1,0,1,0,0,0,0,2,2], line: [] };
-    const finished = { state: 'plr1won', board: [1,1,1,0,0,0,0,2,2], line: [] };
+    const finished = { state: 'plr1won', board: [1,1,1,0,0,0,0,2,2], line: [0,1,2] };
     const result = makeMove(plr1Move, 1);
     expect(result).toEqual(finished);
 })
 
 test('should not work to keep playing after player 1 won', () => {
-    const finished = { state: 'plr1won', board: [1,1,1,0,0,0,0,2,2], line: [] };
-    const tryingToContinuePlaying = { state: 'plr1won', board: [1,1,1,0,0,0,0,2,2], line: [] };
+    const finished = { state: 'plr1won', board: [1,1,1,0,0,0,0,2,2], line: [0,1,2] };
+    const tryingToContinuePlaying = { state: 'plr1won', board: [1,1,1,0,0,0,0,2,2], line: [0,1,2] };
     const result = makeMove(finished, 6);
     expect(result).toEqual(tryingToContinuePlaying);
 
